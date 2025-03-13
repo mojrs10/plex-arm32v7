@@ -29,12 +29,11 @@ jobs:
         run: |
           bash ./fix-permissions.sh
 
-      # Dohvati najnoviju Plex verziju za Linux ARMv7
+      # Dohvati najnoviju Plex verziju koristeći isti pristup kao u Dockerfile-u
       - name: Get latest Plex version
         id: get_version
         run: |
-          response=$(curl -s "https://plex.tv/api/downloads/5.json")
-          version=$(echo $response | jq -r '.computer.Linux.releases[] | select(.build == "linux-armv7hf") | .version')
+          version=$(curl -sX GET 'https://plex.tv/api/downloads/5.json' | jq -r '.computer.Linux.version')
           
           if [ -z "$version" ]; then
             echo "Failed to fetch Plex version."
