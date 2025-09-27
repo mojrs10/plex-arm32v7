@@ -1,5 +1,3 @@
-# FROM ghcr.io/linuxserver/baseimage-ubuntu:arm32v7-jammy
-# FROM mojrapid/baseimage:ubuntu_jammy_s6_plex
 FROM mojrapid/baseimage:ubuntu-jammy_s6_full
 
 # set version label
